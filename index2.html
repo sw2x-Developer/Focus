@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus</title>
+    <link rel="stylesheet" href="./style2.css">
+</head>
+<body>
+
+    <div class="header">
+        <svg viewBox="0 0 300 20">
+            <!-- Symbol-->
+            <symbol id="s-text">
+              <text text-anchor="middle" x="50%" y="50%" dy=".35em">F o c u s</text>
+            </symbol>
+            <!-- Duplicate symbols-->
+            <use class="text" xlink:href="#s-text"></use>
+            <use class="text" xlink:href="#s-text"></use>
+            <use class="text" xlink:href="#s-text"></use>
+            <use class="text" xlink:href="#s-text"></use>
+
+        
+          </svg>
+</div>
+<div class="boxes">
+    <div class="box">
+        <span id="hours">0</span>
+        <p>Hours</p>
+    </div>
+    <div class="box">
+        <span id="minutes">0</span>
+        <p>Minutes</p>
+    </div>
+    <div class="box">
+        <span id="seconds">0</span>
+        <p>Seconds</p>
+    </div>
+    <div class="box">
+        <span id="milliseconds">0</span>
+        <p>Milliseconds</p>
+    </div>
+</div>
+
+<div class="buttons">
+    <Button id="greenbtn" onClick=startTimer()>Start</Button>
+    <Button id="redbtn" onClick=stopTimer()>Stop</Button>
+    <Button id="goldbtn" onClick=resetHistory()>Reset</Button>
+</div>
+
+<div class="list">
+    <ul id="history">
+    </ul>
+</div>
+    
+<script type="text/javascript">
+    fetch()
+    
+    function fetch(){
+      if(localStorage.getItem("history") != null){
+          let newArray = localStorage.getItem("history").split(',').reverse();
+          newArray.map(item => {
+            if(item != null || item != "null"){
+            document.getElementById("history").innerHTML += `<li>${item}</li>`
+        }
+          })
+      }
+    }
+
+    function resetHistory(){
+        localStorage.removeItem("history");
+        document.getElementById("history").innerHTML = "";
+    }
+
+
+var startTime;
+var updatedTime;
+var difference;
+var tInterval;
+var savedTime;
+var paused = 0;
+var running = 0;
+function startTimer(){
+  if(!running){
+    startTime = new Date().getTime();
+    tInterval = setInterval(getShowTime, 1);
+    paused = 0;
+    running = 1;
+  }
+}
+function stopTimer(){
+  clearInterval(tInterval);
+  savedTime = difference;
+  paused = 1;
+  running = 0;
+  var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  var milliseconds = Math.floor((difference % (1000 * 60)) / 100);
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+  milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? "00" + milliseconds : "0" + milliseconds : milliseconds;
+  let today = new Date();
+  var date = today.toJSON().slice(0, 10);
+            var nDate = date.slice(8, 10) + '/' 
+                       + date.slice(5, 7) + '/' 
+                       + date.slice(0, 4);
+  if(hours != NaN || minutes != NaN || seconds != NaN || milliseconds != NaN){
+  localStorage.setItem('history' , localStorage.getItem('history') ? localStorage.getItem('history') + `,${hours} hours and ${minutes} minutes and ${seconds} seconds and ${milliseconds} milliseconds (${nDate})` : `${hours} hours and ${minutes} minutes and ${seconds} seconds and ${milliseconds} milliseconds (${ nDate})`);
+}
+  fetch();
+  savedTime = 0;
+  difference = 0;
+  document.getElementById("hours").innerHTML = 0;
+  document.getElementById("minutes").innerHTML = 0;
+  document.getElementById("seconds").innerHTML = 0;
+  document.getElementById("milliseconds").innerHTML = 0;
+  location.reload();
+}
+function getShowTime(){
+  updatedTime = new Date().getTime();
+  if (savedTime){
+    difference = (updatedTime - startTime) + savedTime;
+  } else {
+    difference =  updatedTime - startTime;
+  }
+  // var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  var milliseconds = Math.floor((difference % (1000 * 60)) / 100);
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+  milliseconds = (milliseconds < 100) ? (milliseconds < 10) ? "00" + milliseconds : "0" + milliseconds : milliseconds;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
+  document.getElementById("milliseconds").innerHTML = milliseconds;
+}
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+#timerContainer {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  width:700px;
+  margin:20px auto;
+  border-top:0px;
+ display: flex;
+}
+.timer, .reset {
+  float:left;
+  width: 54%;
+  padding: 20px 0;
+  font-size: 24px;
+  text-align:center;
+  color: #fff;
+  background: #A90000;
+  cursor: pointer
+}
+.reset {
+  background: #550000;
+  color: white;
+  width:14.9%;
+  border-left: 1px solid #990000;
+}
+.reset:hover {
+  background: #CC0000;
+}
+.lighter {
+  background: #CC0000
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+}
+
+ul {
+  overflow: scroll;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+
+li {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+}
+li:last-child {
+  border-bottom: none;
+}
+li:nth-child(even) {
+  background: #f8f8f8;
+}

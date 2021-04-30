@@ -1,0 +1,165 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html {
+height: 100%;
+width: 100%;
+}
+
+body {
+    background-color: #1B1A1C;
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    margin-top: 50px;
+}
+
+.header h1 {
+    text-align: center;
+}
+
+.boxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    padding: 5px;
+    border: 1px solid lightblue;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 18%;
+    height: 180px;
+    border-radius: 10px;
+    background-color: #E9ECEE;
+}
+
+.box span {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.box p {
+    margin-top: 10px;
+    color: green;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button {
+    margin: 5px;
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0.5px 2px 0.5px black;
+    opacity: 0.6;
+    transition: 0.5s;
+}
+
+
+.buttons #greenbtn:hover{
+    background-color: green;
+    color: white;
+    opacity: 1
+}
+
+.buttons #redbtn:hover{
+    background-color: red;
+    color: white;
+    opacity: 1
+}
+
+
+.buttons #goldbtn:hover{
+    background-color: gold;
+    color: white;
+    opacity: 1
+}
+
+
+ul {
+    overflow: scroll;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    -webkit-overflow-scrolling: touch;
+    text-align: center;
+  }
+  
+  li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    color: #FFFFFF;
+  }
+  li:last-child {
+    border-bottom: none;
+  }
+  li:nth-child(even) {
+    background: grey;
+  }
+
+  @import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+.text {
+  fill: none;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-dasharray: 70 310;
+  stroke-dashoffset: 0;
+  -webkit-animation: stroke 7s infinite linear;
+  animation: stroke 7s infinite linear;
+}
+.text:nth-child(5n+1) {
+  stroke: #f2385a;
+  -webkit-animation-delay: -1.2s;
+  animation-delay: -1.2s;
+}
+.text:nth-child(5n+2) {
+  stroke: #f5a503;
+  -webkit-animation-delay: -2.4s;
+  animation-delay: -2.4s;
+}
+.text:nth-child(5n+3) {
+  stroke: #e9f1df;
+  -webkit-animation-delay: -3.6s;
+  animation-delay: -3.6s;
+}
+.text:nth-child(5n+4) {
+  stroke: #56d9cd;
+  -webkit-animation-delay: -4.8s;
+  animation-delay: -4.8s;
+}
+.text:nth-child(5n+5) {
+  stroke: #3aa1bf;
+  -webkit-animation-delay: -6s;
+  animation-delay: -6s;
+}
+
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: -150;
+  }
+}
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: -150;
+  }
+}
